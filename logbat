@@ -1,0 +1,18 @@
+import time
+from time import gmtime, strftime
+
+def write_log(logline):
+	logfile = open('battery_log-RS.txt', 'a')
+	logfile.write(logline + '\n')
+	logfile.close()
+
+item = 'Battery log data'
+logfile = open('battery_log-RS.txt', 'w')
+logfile.write(item + '\n')
+logfile.close()
+
+while True:
+	logline = str(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+	print ("adding %s to log file" % logline)
+	write_log(logline)
+	time.sleep(150)
